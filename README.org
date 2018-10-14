@@ -1,0 +1,78 @@
+* Basic Configuration
+* Projectile
+#+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :ensure t
+    :init (projectile-mode)
+    :bind
+    (:map projectile-mode-map
+          ("C-c p s s" . counsel-projectile-ag)))
+#+END_SRC
+** Shortcut
+** Charset
+#+BEGIN_SRC emacs-lisp
+  ;; Default File Encoding
+  (prefer-coding-system 'utf-8)
+  ;; Default File Encoding for different File
+  (setq buffer-file-coding-system 'utf-8-unix
+        default-file-name-coding-system 'utf-8-unix
+        default-keyboard-coding-system 'utf-8-unix
+        default-process-coding-system '(utf-8-unix . utf-8-unix)
+        default-sendmail-coding-system 'utf-8-unix
+        default-terminal-coding-system 'utf-8-unix)
+#+END_SRC
+
+* Appearance
+** Emacs Style
+#+BEGIN_SRC emacs-lisp
+  (set-face-attribute 'fringe nil
+                      :foreground nil
+                      :background nil)
+  (set-frame-parameter nil 'internal-border-width 0)
+  (set-window-buffer nil (current-buffer))
+
+  (global-auto-revert-mode 1)
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+  (global-linum-mode -1)
+#+END_SRC
+** Fonts
+#+BEGIN_SRC emacs-lisp
+  (set-default-font "Fira Code")
+#+END_SRC
+** Theme
+#+BEGIN_SRC emacs-lisp
+  (use-package atom-one-dark-theme :ensure)
+  (use-package challenger-deep-theme :ensure)
+  (use-package zenburn-theme :ensure t :init (load-theme 'zenburn t))
+#+END_SRC
+
+** OrgMode
+#+BEGIN_SRC emacs-lisp
+  (use-package org :ensure t
+    :init
+    (setq org-src-fontify-natively t)
+    (setq org-hide-leading-stars t)
+    (setq org-log-into-drawer t)
+    (setq org-todo-keywords '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)" )))
+    (add-hook 'org-mode-hook
+              (lambda ()
+                (setq org-src-ask-before-returning-to-edit-buffer nil)
+                (org-indent-mode 1))))
+  (setq org-ellipsis "⤵")
+  (use-package org-bullets
+    :ensure t
+    :init
+    (add-hook 'org-mode-hook 'org-bullets-mode))
+  
+  (eval-after-load "org"
+    '(require 'ox-md nil t))
+#+end_SRC
+*** Code Snippet
+#+BEGIN_SRC emacs-lisp
+  (defun user/insert-emacs-lisp-src-block ()
+    (interactive)
+    (insert "#+BEGIN_SRC emacs-lisp\n\n#+END_SRC\n"))
+
+  (bind-key "C-x C-'" #'user/insert-emacs-lisp-src-block)
+#+END_SRC
