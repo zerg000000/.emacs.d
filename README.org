@@ -114,6 +114,11 @@
   (size-indication-mode t)  
 #+END_SRC
 ** Fonts
+You should install Fira Code first, in Mac OSX
+#+BEGIN_SRC bash
+brew tap homebrew/cask-fonts
+brew cask install font-fira-code
+#+END_SRC
 #+BEGIN_SRC emacs-lisp
   (set-default-font "Fira Code")
 #+END_SRC
