@@ -5,6 +5,13 @@
     ; add homebrew common path
     (add-to-list 'exec-path "/usr/local/bin")
   )
+
+  ; Organizate partitions
+  (use-package windmove
+    :config
+    ;; use shift + arrow keys to switch between visible buffers
+    (windmove-default-keybindings))
+
   ; General editor behave
 
   ; Tab
@@ -73,6 +80,11 @@
           ("C-c p s s" . counsel-projectile-ag)))
 #+END_SRC
 ** Shortcut
+#+BEGIN_SRC emacs-lisp
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+#+END_SRC
 ** Charset
 #+BEGIN_SRC emacs-lisp
   ;; Default File Encoding
