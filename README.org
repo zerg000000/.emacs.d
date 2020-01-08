@@ -162,11 +162,21 @@ brew cask install font-fira-code
   (eval-after-load "org"
     '(require 'ox-md nil t))
 #+end_SRC
-*** Code Snippet
+** Code Snippet
 #+BEGIN_SRC emacs-lisp
   (defun user/insert-emacs-lisp-src-block ()
     (interactive)
     (insert "#+BEGIN_SRC emacs-lisp\n\n#+END_SRC\n"))
 
   (bind-key "C-x C-'" #'user/insert-emacs-lisp-src-block)
+#+END_SRC
+** Markdown
+#+BEGIN_SRC emacs-lisp
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 #+END_SRC

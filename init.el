@@ -44,7 +44,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (diff-hl rainbow-mode rainbow-delimiters magit paredit cider projectile zenburn-theme challenger-deep-theme atom-one-dark-theme use-package))))
+    (markdown-mode diff-hl rainbow-mode rainbow-delimiters magit paredit cider projectile zenburn-theme challenger-deep-theme atom-one-dark-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
