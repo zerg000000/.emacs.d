@@ -2,6 +2,7 @@
 .cache/*
 tutorial/*
 tutorial
+transient/
 .#README.org
 auto-save-list
 elpa
